@@ -43,25 +43,72 @@ console.log(fullAge)
 //      + job + '. Is he married? ' + isMarried + '.');
 
 
-//Lecture: operators
-var Now = 2018;
-var age = 23;
-var birthYear = Now - age;
+// //Lecture: operators
+// var Now = 2018;
+// var age = 23;
+// var birthYear = Now - age;
 
-console.log(birthYear);
+// console.log(birthYear);
 
-var ageDoug = 23;
-var ageMike = 24;
+// var ageDoug = 23;
+// var ageMike = 24;
 
-// Lectur: if else statements
+// // Lectur: if else statements
+
+// var name = 'Doug';
+// var age = 23;
+// var isMarried = false;
+
+// if (isMarried){
+//     console.log(name + ' is married!');
+// } else {
+//     console.log(name + ' is not married!');
+// }
+
+// Lecture: boolean logic and switch
 
 var name = 'Doug';
-var age = 23;
-var isMarried = false;
+var age = 1;
 
-if (isMarried){
-    console.log(name + ' is married!');
-} else {
-    console.log(name + ' is not married!');
+ if (age <= 12) {
+     console.log(name + ' is a child.')
+ } else if (age > 12 && age < 20) {
+     console.log(name + ' is a teenager.');
+ } else if (age >= 20 && age < 30){
+     console.log(name + ' is an young adult.');
+ } else {
+     console.log(name + ' is an adult.')
+ }
+
+ if (name == 'Bob' || name == 'Doug') {
+    console.log('Correct person.')
+ } else {
+    console.log('Not valid.')
+ }
+
+
+function test (job, invalid) {
+     switch (job) {
+        case 'teacher':
+            console.log(name + ' teaches kids.');
+            invalid = false;
+            break;
+        case 'driver':
+            console.log(name + ' drives a cab in Lisbon.');
+            invalid = false;
+            break;
+        default:
+            console.log(name + ' is a ' + job + '.');
+    }
+    return invalid
 }
 
+invalid = true;
+var job = prompt('Is ' + name + " a teacher or a driver?");
+
+while (invalid) {
+    invalid = test(job, invalid);
+    if (invalid){
+        var job = prompt('Please enter a valid option. (teacher or driver)')
+    }
+}
