@@ -49,3 +49,19 @@ var age = 23;
 var birthYear = Now - age;
 
 console.log(birthYear);
+
+var ageDoug = 23;
+var ageMike = 24;
+
+// Lectur: if else statements
+
+var name = 'Doug';
+var age = 23;
+var isMarried = false;
+
+if (isMarried){
+    console.log(name + ' is married!');
+} else {
+    console.log(name + ' is not married!');
+}
+
