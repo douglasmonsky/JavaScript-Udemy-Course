@@ -21,6 +21,7 @@ function newGame(){
     for (i = 0; i < 2; i++){
         document.getElementById("score-" + i).textContent = 0;
         document.getElementById("current-" + i).textContent = 0;
+        document.getElementById('name-' + activePlayer).textContent = 'Player ' + i;
     }
 }
 
@@ -41,11 +42,9 @@ var x = document.querySelector("#current-0").textContent;
 console.log(x);
 
 
-
 document.querySelector(".btn-new").addEventListener('click', function() {
     newGame();
 });
-
 
 
 document.querySelector(".btn-roll").addEventListener('click', function() {
@@ -67,8 +66,13 @@ document.querySelector(".btn-roll").addEventListener('click', function() {
 
 
 document.querySelector(".btn-hold").addEventListener('click', function() {
-    var addScore = document.getElementById("current-" + activePlayer).textContent;
     scores[activePlayer] += roundScore;
     document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
-    endRound();
+    if (scores[activePlayer] >= 100){
+        document.getElementById('name-' + activePlayer).textContent = 'Winner!';
+        document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
+         document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+    } else {
+        endRound();
+    }
 });
