@@ -100,7 +100,7 @@ function test (job, invalid) {
         default:
             console.log(name + ' is a ' + job + '.');
     }
-    return invalid
+    return invalid;
 }
 
 invalid = true;
