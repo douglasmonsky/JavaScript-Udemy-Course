@@ -23,3 +23,22 @@ function yearsUntilRetirement(name, yearOfBirth) {
 
 yearsUntilRetirement('Doug', 1994);
 yearsUntilRetirement('Jon', 1940);
+
+//Section 2, Lecture 17 Statements and expressions
+
+function someFun(par) {
+    //code
+}
+
+var expression = function(par) {
+    //code
+}
+
+//Expression 
+3 + 4;
+var x = 3;
+
+//Statements
+if (x === 5) {
+    //do something
+}
