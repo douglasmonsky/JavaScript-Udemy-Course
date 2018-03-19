@@ -66,7 +66,7 @@ function first() {
 
     function second() {
         var c = 'Hey!';
-        third()
+        third();
 
         function third() {
             var d = 'John';
@@ -83,11 +83,35 @@ function first() {
 ///////////////////////////////////////
 // Lecture: The this keyword
 
+console.log(this);
 
+function calculateAge(year) {
+    console.log(2018 - year);
+    console.log(this);
+}
 
+calculateAge(1994);
 
+var doug = {
+    name: 'doug',
+    yearOfBirth: 1994,
+    calculateAge: function() {
+        console.log(this);
+        console.log(2018 - this.yearOfBirth);
+        
+        // function innerFunction() {
+        //     console.log(this);
+        // }
+        // innerFunction();
+    }
+};
 
+doug.calculateAge()
 
+var mike = {
+    name: 'Mike',
+    yearOfBirth: 1993,
+};
 
-
-
+mike.calculateAge = doug.calculateAge;
+mike.calculateAge();
