@@ -10,29 +10,42 @@ GAME RULES:
 */
 
 
+
 var scores, roundScore, activePlayer;
 
-scores = [0, 0];
-roundScore = 0;
-activePlayer = 0;
-
-var x = document.querySelector("#current-0").textContent;
-console.log(x);
-
-document.querySelector(".dice").style.display = 'none';
-
-document.getElementById('score-0').textContent = '0';
-
-
-document.querySelector(".btn-new").addEventListener('click', function() {
+function newGame(){
     scores = [0, 0];
     roundScore = 0;
     activePlayer = 0;
     document.querySelector(".dice").style.display = 'none';
     for (i = 0; i < 2; i++){
         document.getElementById("score-" + i).textContent = 0;
+        document.getElementById("current-" + i).textContent = 0;
     }
-})
+}
+
+
+function endRound(){
+    roundScore = 0;
+     document.getElementById("current-" + activePlayer).textContent = roundScore;
+     document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
+     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+     document.querySelector('.player-' + activePlayer + '-panel').classList.toggle('active');
+     document.querySelector('.dice').style.display = 'none';
+
+}
+
+newGame();
+
+var x = document.querySelector("#current-0").textContent;
+console.log(x);
+
+
+
+document.querySelector(".btn-new").addEventListener('click', function() {
+    newGame();
+});
+
 
 
 document.querySelector(".btn-roll").addEventListener('click', function() {
@@ -44,5 +57,18 @@ document.querySelector(".btn-roll").addEventListener('click', function() {
     diceDOM.src = 'dice-' + dice + '.png';
     document.querySelector("#current-" + activePlayer).textContent = dice;
     //Update the round score if the rolled number != 1
+    if (dice !== 1) {
+        roundScore += dice;
+        document.getElementById("current-" + activePlayer).textContent = roundScore;
+    } else {
+        endRound();
+    }
 });
 
+
+document.querySelector(".btn-hold").addEventListener('click', function() {
+    var addScore = document.getElementById("current-" + activePlayer).textContent;
+    scores[activePlayer] += roundScore;
+    document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
+    endRound();
+});
