@@ -50,4 +50,24 @@ Book.prototype.closeBook = function() {
 
 textbook.closeBook();
 
-console.log(Book.prototype);
+document.getElementById('test').textContent = doug.name;
+
+
+//Object.create
+
+var personProto = {
+    calculateAge: function() {
+        console.log(2018 - yearOfBirth);
+    }
+}
+
+var doug = Object.create(personProto);
+doug.name = 'Doug';
+doug.yearOfBirth = 1994;
+
+var jane = Object.create(personProto, 
+{
+    name: {value: 'Jane' },
+    yearOfBirth: {value: 1969 },
+    job: {value: 'designer' }
+});
