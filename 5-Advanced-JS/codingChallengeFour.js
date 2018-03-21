@@ -11,7 +11,6 @@
                 console.log(i + ': ' + this.choices[i])
             }
         }
-    
 
     var questionOne = new Question('Who made this quiz?', 'Doug', ['Doug', 'Jesse', 'Mike', 'None of the above'])
     var questionTwo = new Question('Who is the tallest?', 'Jesse', ['Doug', 'Jesse', 'Mike', 'None of the above'])
@@ -26,9 +25,8 @@
             }
         })();
 
-
-    
-    while (true) {
+    var gameActive = true;
+    while (gameActive) {
         var randomQuestion = questions[Math.floor(Math.random() * questions.length)]
         randomQuestion.displayQuestion();
         var playerChoice = prompt('Enter your answer choice');
