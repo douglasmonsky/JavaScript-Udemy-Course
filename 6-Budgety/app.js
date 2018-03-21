@@ -53,21 +53,31 @@ var UIController = (function() {
 
 
 var controller = (function(budgetCtrl, UIctrl) {
-    var DOMstrings = UIctrl.getDOMstring();
+    var setupEventListeners = function() {
+        var DOMstrings = UIctrl.getDOMstring();
+
+        document.querySelector(DOMstrings.inputBtn).addEventListener('click', ctrlAddItem);
+
+        document.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                ctrlAddItem();
+            }
+        });
+    };
+
 
     var ctrlAddItem = function() {
         var input = UIctrl.getinput();
         console.log(input);
-
     }
 
-    document.querySelector(DOMstrings.inputBtn).addEventListener('click', ctrlAddItem);
-
-    document.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            ctrlAddItem();
+    
+    return {
+        init: function() {
+            setupEventListeners();
         }
-    });
-
+    }
 })(budgetController, UIController);
 
+
+controller.init();
