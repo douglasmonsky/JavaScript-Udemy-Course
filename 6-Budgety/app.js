@@ -1,27 +1,73 @@
 var budgetController = (function() {
-    var x = 23;
-    var add = function(a) {
-        return x + a;
-    }
-    return {
-        publicTest: function(b) {
-            return add(b);
-        }
-    }
+
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 var UIController = (function() {
-    // some code
+    var DOMstrings = {
+        inputType: '.add__type',
+        inputDescription: '.add__description',
+        inputValue: '.add__value',
+        inputBtn: '.add__btn'
+    }
+
+    return {
+        getinput: function() {
+            return {
+                type: document.querySelector(DOMstrings.inputType).value,
+                description: document.querySelector(DOMstrings.inputDescription).value,
+                value: document.querySelector(DOMstrings.inputValue).value,
+            };
+        },
+        getDOMstring: function() {
+            return DOMstrings;
+        }
+    }
 })();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 var controller = (function(budgetCtrl, UIctrl) {
-    var z = budgetCtrl.publicTest(5);
-    return {
-        anotherPublic: function() {
-            console.log(z);
-        }
+    var DOMstrings = UIctrl.getDOMstring();
+
+    var ctrlAddItem = function() {
+        var input = UIctrl.getinput();
+        console.log(input);
+
     }
+
+    document.querySelector(DOMstrings.inputBtn).addEventListener('click', ctrlAddItem);
+
+    document.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            ctrlAddItem();
+        }
+    });
+
 })(budgetController, UIController);
 
