@@ -57,7 +57,7 @@ var budgetController = (function() {
             }
 
             data.allItems[type].push(newItem);
-            data.totals[type] += val;
+            data.totals[type] += Math.abs(val);
             return newItem;
         },
 
