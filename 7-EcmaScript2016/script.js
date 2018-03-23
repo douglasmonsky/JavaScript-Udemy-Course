@@ -83,3 +83,86 @@ console.log(n.startsWith('D'));
 console.log(n.endsWith('y'));
 console.log(n.includes(' '));
 console.log(`${firstName} `.repeat(5));
+
+
+//Lecture: Arrow functions
+const years = [1990, 1994, 1965, 1982, 1937];
+
+//ES5
+var ages5 = years.map(function(current) {
+    return 2018 - current;
+});
+console.log(ages5);
+
+//ES6
+let ages6 = years.map(current => 2018 - current);
+console.log(ages6);
+
+ages6 = years.map((current, index) => `Age element ${index + 1}: ${ 2018 - current}.`);
+console.log(ages6);
+
+ages6 = years.map((current, index) => {
+    const now = new Date().getFullYear();
+    const age = now - current;
+    return `Age element ${index + 1}: ${ age}.`;
+});
+console.log(ages6);
+
+
+//ES5
+var box5 = {
+    color: 'green',
+    position: 1,
+    clickMe: function() {
+        var self = this;
+        document.querySelector('.green').addEventListener('click', function() {
+            var str = 'This is box number ' + self.position + ' and it is ' + self.color;
+            alert(str);
+        })
+    }
+}
+// box5.clickMe();
+
+//ES6
+const box6 = {
+    color: 'green',
+    position: 1,
+    clickMe: function() {
+        document.querySelector('.green').addEventListener('click', () => {
+            var str = 'This is box number ' + this.position + ' and it is ' + this.color;
+            alert(str);
+        })
+    }
+}
+// box6.clickMe();
+
+
+
+
+function Person(name) {
+    this.name = name;
+};
+
+//ES5
+Person.prototype.myFriends5 = function(friends) {
+    var arr = friends.map(function(current) {
+        return this.name + ' is friends with ' + current;
+    }.bind(this));
+    console.log(arr);
+};
+
+var friends = ['Chris', 'Mike', 'Jesse'];
+var doug = new Person('Doug');
+doug.myFriends5(friends);
+
+//ES6
+Person.prototype.myFriends6 = function(friends) {
+    var arr = friends.map(current => 
+        `${this.name} is friends with ${current}`
+    );
+    console.log(arr);
+};
+
+var friends = ['Chris', 'Mike', 'Jesse'];
+var doug = new Person('Doug');
+doug.myFriends6(friends);

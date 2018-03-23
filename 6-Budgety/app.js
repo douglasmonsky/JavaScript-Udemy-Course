@@ -27,13 +27,16 @@ var budgetController = (function() {
             inc: []
         },
         totals: {
+
             exp: 0,
             inc: 0,
             budget: function() {
-                return (data.totals.inc - data.totals.exp);
+                 var self = this;
+                return (self.inc - self.exp);
             },
             percentage: function() {
-                return (data.totals.inc ? Math.round((data.totals.exp / data.totals.inc) * 100) : 0)
+                 var self = this;
+                return (self.inc ? Math.round((self.exp / self.inc) * 100) : 0)
             }
         }
     };
