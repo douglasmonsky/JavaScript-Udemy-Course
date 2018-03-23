@@ -56,5 +56,30 @@ console.log(i);
     let b = 2;
 }
 
-console.log(a + b);  // {} can be used to create blocks, therefore this does not work as they variables
+// console.log(a + b);  // {} can be used to create blocks, therefore this does not work as they variables
                     // are contained within the block
+
+//Lecture: String
+let firstName = 'Doug';
+let lastName = 'Monsky';
+const yearOfBirth = 1994;
+
+function calcAge(year) {
+    return 2018 - year;
+}
+
+//ES5
+console.log('This is ' + firstName + ' ' + lastName);
+
+//ES6
+console.log(`This is ${firstName} ${lastName}.`);
+
+const n = `${firstName} ${lastName}`;
+
+console.log(n.startsWith('j'));
+console.log(n.startsWith('d'));
+console.log(n.startsWith('D'));
+
+console.log(n.endsWith('y'));
+console.log(n.includes(' '));
+console.log(`${firstName} `.repeat(5));
