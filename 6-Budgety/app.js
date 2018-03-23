@@ -42,7 +42,7 @@ var budgetController = (function() {
     return {
         addItem: function (type, desc, val) {
             var newItem, ID;
-
+            val = Math.abs(val);
              //Create new ID by retrieving last item in arrays id +1
              if (data.allItems[type].length > 0) {
                 ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
@@ -57,7 +57,7 @@ var budgetController = (function() {
             }
 
             data.allItems[type].push(newItem);
-            data.totals[type] += Math.abs(val);
+            data.totals[type] += val;
             return newItem;
         },
 
