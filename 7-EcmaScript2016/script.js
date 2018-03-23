@@ -49,3 +49,12 @@ for (let i = 0; i < 5; ++i) {
 }
 
 console.log(i);
+
+//Lecture: Blocks
+{
+    const a = 1;
+    let b = 2;
+}
+
+console.log(a + b);  // {} can be used to create blocks, therefore this does not work as they variables
+                    // are contained within the block
