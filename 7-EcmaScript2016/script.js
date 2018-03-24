@@ -314,3 +314,32 @@ function isFullAge6(limit, ...years) {
 }
 
 isFullAge6(21, 1990, 1999, 1965, 2006);
+
+
+//Default parameters
+
+//ES5
+function SmithPerson(firstName, lastName, yearOfBirth, nationality) {
+
+    lastName === undefined  ? lastName = 'Smith': lastName;
+    nationality === undefined  ? nationality = 'American' : nationality;
+
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.nationality = nationality;
+}
+
+var john = new SmithPerson('John', undefined, 1990);
+console.log(john);
+
+//ES6
+function SmithPerson(firstName, lastName= 'Smith', yearOfBirth, nationality= 'American') {  // I assume you should really put Kwargs at end, just testing
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.nationality = nationality;
+}
+
+let bob = new SmithPerson('Bob', undefined, 1990);
+console.log(bob);
