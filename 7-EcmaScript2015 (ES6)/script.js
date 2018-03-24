@@ -343,3 +343,34 @@ function SmithPerson(firstName, lastName= 'Smith', yearOfBirth, nationality= 'Am
 
 let bob = new SmithPerson('Bob', undefined, 1990);
 console.log(bob);
+
+
+// Maps
+
+const question = new Map();
+question.set('question', 'What is the official name of the latest major JS version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer');
+question.set(false, 'Incorrect');
+
+console.log(question);
+
+console.log(question.get('question'));
+console.log(question.size);
+
+// question.delete(4);
+// question.has(4);
+// question.clear();
+question.forEach((value, key) => 
+    console.log(`${key}: ${value}`))
+
+
+for (let [key, value] of question.entries()) {
+    if (typeof(key) === 'number') {
+        console.log(`${key}: ${value}`)
+    }
+}
