@@ -275,3 +275,42 @@ const heading = document.querySelector('h1');
 const boxes2 = document.querySelectorAll('.box');
 const all = [heading, ...boxes2];
 all.forEach(current => current.style.color = 'purple');
+
+//Rest parameters
+
+//ES5
+/*function isFullAge5() {
+    var argsArr = Array.prototype.slice.call(arguments);
+
+    argsArr.forEach(function(current) {
+        console.log((2018 - current) >= 18);
+    })
+    console.log(arguments);
+}
+
+isFullAge5(1990, 1999, 1965, 2006);
+
+//ES6
+function isFullAge6(...years) {
+    years.forEach(current => console.log((2018 - current) >=18));
+}
+
+isFullAge6(1990, 1999, 1965, 2006);*/
+
+
+function isFullAge5(limit) {
+    var argsArr = Array.prototype.slice.call(arguments, 1);
+
+    argsArr.forEach(function(current) {
+        console.log((2018 - current) >= limit);
+    })
+}
+
+isFullAge5(21, 1990, 1999, 1965, 2006);
+
+//ES6
+function isFullAge6(limit, ...years) {
+    years.forEach(current => console.log((2018 - current) >= limit));
+}
+
+isFullAge6(21, 1990, 1999, 1965, 2006);
