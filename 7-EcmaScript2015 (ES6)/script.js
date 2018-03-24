@@ -374,3 +374,107 @@ for (let [key, value] of question.entries()) {
         console.log(`${key}: ${value}`)
     }
 }
+
+//Classes
+
+//ES5
+function Person5(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person.prototype.calcAge = function() {
+    var age = new Date().getFullYear = this.yearOfBirth;
+    console.log(age);
+}
+
+var doug5 = new Person5('Doug', 1994, 'programmer');
+
+//ES6
+// class Person6 {
+//     constructor(name, yearOfBirth, job) {
+//         this.name = name;
+//         this.yearOfBirth = yearOfBirth;
+//         this.job = job;
+//     }
+//     calcAge() {
+//         var age = new Date().getFullYear() - this.yearOfBirth;
+//         console.log(age);
+//     }
+//     static greeting() {
+//         console.log('Hey there!');
+//     }
+// }
+
+// doug6 = new Person6('Doug', 1994, 'programmer');
+// doug6.calcAge();
+
+// Person6.greeting();
+
+//Inheritence
+
+//ES5
+function Person5(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person5.prototype.calcAge = function() {
+    var agePerson = new Date().getFullYear() - this.yearOfBirth;
+    console.log(agePerson);
+}
+
+
+function Athlete5(name, yearOfBirth, job, olympicGames, medals) {
+    Person5.call(this, name, yearOfBirth, job);
+    this.olympicGames = olympicGames;
+    this.medals = medals;
+}
+Athlete5.prototype = Object.create(Person5.prototype);
+Athlete5.prototype.wonMedal = function () {
+    ++this.medals;
+    console.log(this.medals);
+}
+
+var athlete5 = new Athlete5('Doug', 1994, 'Disk Thrower', 1, 1);
+athlete5.calcAge();
+athlete5.wonMedal();
+
+
+
+
+//ES6
+class Person6 {
+    constructor(name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+    calcAge() {
+        var age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+    static greeting() {
+        console.log('Hey there!');
+    }
+}
+
+
+class Athlete6 extends Person6 {
+    constructor(name, yearOfBirth, job, olympicGames, medals) {
+        super(name, yearOfBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+    wonMedal() {
+        console.log(++this.medals);
+    }
+}
+
+const athlete6 = new Athlete6('Doug', 1994, 'Disk Thrower', 1, 1);
+athlete6.calcAge();
+athlete6.wonMedal();
+
+
